@@ -23,13 +23,13 @@ def avg_fire_area(df: DataFrame):
     return forest_fire_monthly_avg
 
 
-@dag(schedule='@daily', start_date=datetime(2023, 2, 1), catchup=False)
+@dag(schedule=None, start_date=datetime(2023, 2, 1), catchup=False)
 def forest_fire_etl():
 
     load_ff_data = aql.load_file(
-        # input_file=File(path='/usr/local/airflow/include/forestfires.csv', filetype=FileType.CSV),
-        input_file=File(path='s3://airflow-kenten/forestfires.csv', filetype=FileType.CSV, conn_id='AWS'),
-        output_table=Table(name="raw_forestfires", conn_id=SNOWFLAKE_CONN),
+        input_file=File(path='/usr/local/airflow/include/forestfires.csv', filetype=FileType.CSV),
+        # input_file=File(path='s3://airflow-kenten/forestfires.csv', filetype=FileType.CSV, conn_id='AWS'),
+        output_table=Table(name="raw_forestfires", conn_id='sqlite_conn'),
         if_exists='replace',
         use_native_support=False
     )
