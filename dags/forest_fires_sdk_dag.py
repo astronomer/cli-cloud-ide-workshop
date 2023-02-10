@@ -9,7 +9,7 @@ from astro.constants import FileType
 from astro.files import File
 from astro.sql.table import Table
 
-SNOWFLAKE_CONN='snowflake'
+connection_id='duckdb_default'
 
 @aql.transform
 def filter_fires(input_table: Table):
@@ -27,9 +27,9 @@ def avg_fire_area(df: DataFrame):
 def forest_fire_etl():
 
     load_ff_data = aql.load_file(
-        input_file=File(path='/usr/local/airflow/include/forestfires.csv', filetype=FileType.CSV),
+        input_file=File(path='/usr/local/airflow/include/data/forestfires.csv', filetype=FileType.CSV),
         # input_file=File(path='s3://airflow-kenten/forestfires.csv', filetype=FileType.CSV, conn_id='AWS'),
-        output_table=Table(name="raw_forestfires", conn_id='sqlite_conn'),
+        output_table=Table(name="raw_forestfires", conn_id=connection_id),
         if_exists='replace',
         use_native_support=False
     )
