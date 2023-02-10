@@ -28,7 +28,6 @@ def forest_fire_etl():
 
     load_ff_data = aql.load_file(
         input_file=File(path='/usr/local/airflow/include/data/forestfires.csv', filetype=FileType.CSV),
-        # input_file=File(path='s3://airflow-kenten/forestfires.csv', filetype=FileType.CSV, conn_id='AWS'),
         output_table=Table(name="raw_forestfires", conn_id=connection_id),
         if_exists='replace',
         use_native_support=False
