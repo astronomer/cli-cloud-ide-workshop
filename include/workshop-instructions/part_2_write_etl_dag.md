@@ -1,8 +1,8 @@
 ## Part 2: Write an ELT DAG with the Astro SDK
 
-The second part of this workshop will cover developing a simple ELT DAG using the Astro Python SDK.
+The second part of this workshop will cover developing a simple ELT DAG. We will use the Astro Python SDK to write a DAG that takes a year's worth of forest fire data from Portugal and creates a reporting table with the average area burned per month.
 
-### Step 1: Review the forest fire data
+### Step 1: Review the data
 
 This DAG processes forest fire data that can be found in `include/data/forestfires.csv`. The data is straightforward and small in size - take a look at it in your code editor or in the GitHub repo from your browser.
 
