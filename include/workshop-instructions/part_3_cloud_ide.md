@@ -8,14 +8,14 @@ Add the following to the first global imports cell
 species_by_country - 
 ```sql
 SELECT 
-    IUCN,
+    "iucn",
     "IUCN Category",
-    SPEC,
+    "spec",
     "Species",
-     COU,
+    "cou",
     "Country",
     "Value"
-FROM "SANDBOX"."KENTENDANAS"."COUNTRY_VULNERABLE";
+FROM "SANDBOX"."CLIMATE"."COUNTRY_SPECIES_STATUS";
 ```
 
 transform_endangered_species - 
@@ -36,12 +36,12 @@ return endangered_species_agg
 terrestrial_protected_area - 
 ```sql
 SELECT
- COU,
+"cou",
 "Country",
 "Year",
 "Unit",
 "Value"
-FROM "SANDBOX"."KENTENDANAS"."COUNTRY_TERRESTRIAL_PROTECTED_AREA";
+FROM "SANDBOX"."CLIMATE"."COUNTRY_TERRESTRIAL_PROTECTED_AREA";
 ```
 
 transform_tpa -
