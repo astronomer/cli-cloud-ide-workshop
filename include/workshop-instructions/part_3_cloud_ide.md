@@ -33,7 +33,7 @@ SELECT
     "cou",
     "Country",
     "Value"
-FROM "SANDBOX"."CLIMATE"."COUNTRY_SPECIES_STATUS";
+FROM "CLIMATE"."CLIMATE"."COUNTRY_SPECIES_STATUS";
 ```
 
 ### Step 5: Transform the endangered species data
