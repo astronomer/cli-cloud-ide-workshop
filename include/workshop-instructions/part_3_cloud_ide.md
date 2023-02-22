@@ -66,6 +66,7 @@ Create a new SQL cell called `terrestrial_protected_area`. In the connection dro
 
 Enter the following SQL code in the cell, and then run it.
 
+
 ```sql
 SELECT
 "cou",
@@ -73,7 +74,7 @@ SELECT
 "Year",
 "Unit",
 "Value"
-FROM "SANDBOX"."CLIMATE"."COUNTRY_TERRESTRIAL_PROTECTED_AREA";
+FROM "CLIMATE"."CLIMATE"."COUNTRY_TERRESTRIAL_PROTECTED_AREA";
 ```
 
 ### Step 7: Transform the protected area data
