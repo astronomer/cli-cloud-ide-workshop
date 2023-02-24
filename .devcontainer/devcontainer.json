@@ -7,5 +7,5 @@
     },
     "postCreateCommand": "bash -i -c 'astro dev start -n --wait 5m'",
     "forwardPorts": [8080]
-  }
+  } 
   
