@@ -18,9 +18,25 @@ In the first global imports cell, add the following:
 
 `import pandas as pd`
 
-### Step 4: Import and review species status data
+### Step 4: Load species status data
 
-Create a new SQL cell called `species_by_country`. In the connection drop down, choose the `snowflake_workshop` connection that is pre-populated.
+Create a new Python cell called "load_1" and add the following code to the cell:
+
+```python
+return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip')
+```
+
+### Step 5: Import and review species status data
+
+Create a new Python cell called "load_2" and add the following code to the cell:
+
+```python
+return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip')
+```
+
+### Step 6: Import and review species status data
+
+Create a new SQL cell called `species_by_country`. In the connection drop down, choose the In-memory SQL database.
 
 Enter the following SQL code in the cell, and then run it.
 
@@ -62,7 +78,7 @@ This takes the data returned in the previous cell and completes a couple of tran
 
 ### Step 6: Import and review protected area data
 
-Create a new SQL cell called `terrestrial_protected_area`. In the connection drop down, choose the `snowflake_workshop` connection that is pre-populated.
+Create a new SQL cell called `terrestrial_protected_area`. In the connection drop down, choose the In-memory SQL database
 
 Enter the following SQL code in the cell, and then run it.
 
