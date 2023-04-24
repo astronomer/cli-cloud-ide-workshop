@@ -72,7 +72,7 @@ This takes the data returned in the previous cell and completes a couple of tran
 
 ### Step 7: Load Terrestrial Protected Area Data
 
-Create a new Python cell called "load_terrestrial_proected_area_data" and add the following code to the cell:
+Create a new Python cell called "load_terrestrial_protected_area_data" and add the following code to the cell:
 
 ```python
 return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip')
@@ -92,7 +92,7 @@ SELECT
 "Year",
 "Unit",
 "Value"
-FROM {{ load_terrestrial_proected_area_data }};
+FROM {{ load_terrestrial_protected_area_data }};
 ```
 
 ### Step 9: Transform the protected area data
