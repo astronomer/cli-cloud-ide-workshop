@@ -18,25 +18,18 @@ In the first global imports cell, add the following:
 
 `import pandas as pd`
 
-### Step 4: Load species status data
 
-Create a new Python cell called "load_1" and add the following code to the cell:
+### Step 4: Load Species Status Data
 
-```python
-return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip')
-```
-
-### Step 5: Import and review species status data
-
-Create a new Python cell called "load_2" and add the following code to the cell:
+Create a new Python cell called "load_species_status_data" and add the following code to the cell:
 
 ```python
 return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip')
 ```
 
-### Step 6: Import and review species status data
+### Step 5: Import and review species status data
 
-Create a new SQL cell called `species_by_country`. In the connection drop down, choose the In-memory SQL database.
+Create a new SQL cell called `species_by_country`. In the connection drop down menu, choose the In-memory SQL database.
 
 Enter the following SQL code in the cell, and then run it.
 
@@ -49,10 +42,10 @@ SELECT
     "cou",
     "Country",
     "Value"
-FROM "CLIMATE"."CLIMATE"."COUNTRY_SPECIES_STATUS";
+FROM {{ load_species_status_data }};
 ```
 
-### Step 5: Transform the endangered species data
+### Step 6: Transform the endangered species data
 
 Create a new Python cell called `transform_endangered_species`. Enter the following Python code into the cell:
 
@@ -76,7 +69,16 @@ This takes the data returned in the previous cell and completes a couple of tran
 2. Filters to only the Critically Endangered Species IUCN category
 3. Calculates the total number of critically endangered species by country using `groupby`.
 
-### Step 6: Import and review protected area data
+
+### Step 7: Load Terrestrial Protected Area Data
+
+Create a new Python cell called "load_terrestrial_proected_area_data" and add the following code to the cell:
+
+```python
+return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip')
+```
+
+### Step 8: Import and review protected area data
 
 Create a new SQL cell called `terrestrial_protected_area`. In the connection drop down, choose the In-memory SQL database
 
@@ -90,10 +92,10 @@ SELECT
 "Year",
 "Unit",
 "Value"
-FROM "CLIMATE"."CLIMATE"."COUNTRY_TERRESTRIAL_PROTECTED_AREA";
+FROM {{ load_terrestrial_proected_area_data }};
 ```
 
-### Step 7: Transform the protected area data
+### Step 9: Transform the protected area data
 
 Create a new Python cell called `transform_tpa`. Enter the following Python code into the cell:
 
@@ -117,7 +119,7 @@ This takes the data returned in the previous cell and completes a couple of tran
 2. Rounds the percentage of protected area so the numbers are easier to review.
 3. Renames the `Value` column so that we can clearly join the two datasets later.
 
-### Step 8: Combine the two datasets
+### Step 10: Combine the two datasets
 
 Create a new Python cell called `combine_data`. Enter the following Python code into the cell:
 
@@ -131,9 +133,9 @@ return transform_endangered_species.merge(
 
 This creates a new temporary dataset with the joined data.
 
-### Step 9: Analyze the results by ranking the 10 countries with the most critically endangered species
+### Step 11: Analyze the results by ranking the 10 countries with the most critically endangered species
 
-Create a new SQL cell called `rank_and_save`. In the connection drop down, choose the `snowflake_workshop` connection that is pre-populated.
+Create a new SQL cell called `rank_and_save`. In the connection drop down menu, choose the In-memory SQL database.
 
 ```sql
 select * from {{combine_data}}
