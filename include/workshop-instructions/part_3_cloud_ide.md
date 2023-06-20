@@ -24,7 +24,7 @@ In the first global imports cell, add the following:
 Create a new Python cell called "load_species_status_data" and add the following code to the cell:
 
 ```python
-return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip', nrows=20)
+return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip', nrows=100)
 ```
 
 ### Step 5: Import and review species status data
@@ -75,7 +75,7 @@ This takes the data returned in the previous cell and completes a couple of tran
 Create a new Python cell called "load_terrestrial_protected_area_data" and add the following code to the cell:
 
 ```python
-return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip', nrows=20)
+return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip', nrows=100)
 ```
 
 ### Step 8: Import and review protected area data
