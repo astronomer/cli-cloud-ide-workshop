@@ -24,7 +24,7 @@ In the first global imports cell, add the following:
 Create a new Python cell called "load_species_status_data" and add the following code to the cell:
 
 ```python
-return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip')
+return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip', nrows=20)
 ```
 
 ### Step 5: Import and review species status data
