@@ -1,3 +1,2 @@
-duckdb==0.6.1
-airflow-provider-duckdb==0.0.2
-astro-sdk-python==1.5.0
+apache-airflow-providers-github
+apache-airflow-providers-http
