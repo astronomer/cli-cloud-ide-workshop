@@ -1,4 +1,4 @@
-## Part 3: Write a pipeline with the Astro Cloud IDE
+## Part 2: ELT pipeline
 
 Parts 1 and 2 showed how easy it can be to get started using Airflow locally and write simple pipelines. Now in Part 3, we'll tackle a slightly more complex use case of combining two more complicated datasets. We will use the Astro Cloud IDE to develop a pipeline that compares the number of endangered species present in a country with the amount of protected area that country has set aside for wildlife with the goal of making a recommendation for countries to prioritize for conservation efforts.
 
