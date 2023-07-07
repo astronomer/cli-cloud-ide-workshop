@@ -1,25 +1,21 @@
 ## Part 2: ELT pipeline
 
-Parts 1 and 2 showed how easy it can be to get started using Airflow locally and write simple pipelines. Now in Part 3, we'll tackle a slightly more complex use case of combining two more complicated datasets. We will use the Astro Cloud IDE to develop a pipeline that compares the number of endangered species present in a country with the amount of protected area that country has set aside for wildlife with the goal of making a recommendation for countries to prioritize for conservation efforts.
+Part 1 showed how easy it can be to get started using Airflow with the Cloud IDE. Now in Part 2, we'll tackle a slightly more complex use case of combining two complicated datasets. We will use the Cloud IDE to develop a pipeline that compares the number of endangered species present in a country with the amount of protected area that country has set aside for wildlife with the goal of making a recommendation for countries to prioritize for conservation efforts. Since we are unfamiliar with this data to start, we'll use the Cloud IDE to iteratively develop our pipeline.
 
 The data is publicly available and can be found [here](https://www.kaggle.com/datasets/sarthakvajpayee/global-species-extinction).
 
-### Step 1: Review the data
+### Step 1: Create a pipeline with the Astro Cloud IDE
 
-Go to `include/data/` and look at the two datasets we will use for this part: `country_terrestrial_protected_area.csv` and `country_species_status.csv`. The first dataset, `country_terrestrial_protected_area.csv`, is a time series of the percentage of land protected for each country from 1950-2021. You can see right away that both of these datasets are larger and more complex than the forest fires data of Part 2.
+Create a new pipeline in your workspace. Give your pipeline a unique name to identify it.
 
-### Step 2: Create a pipeline with the Astro Cloud IDE
-
-Go to cloud.astronomer.io and login with one of the login/password combinations provided. Click on the `Astro SF Workshop` workspace, and then `Cloud IDE` in the left menu. You should see one project called `Astro SF Workshop` - click in this project, and create a new pipeline using the `+ Pipeline` button. Give your pipeline a unique name to identify it.
-
-### Step 3: Add global imports
+### Step 2: Add global imports
 
 In the first global imports cell, add the following:
 
 `import pandas as pd`
 
 
-### Step 4: Load Species Status Data
+### Step 3: Load Species Status Data
 
 Create a new Python cell called "load_species_status_data" and add the following code to the cell:
 
@@ -27,7 +23,7 @@ Create a new Python cell called "load_species_status_data" and add the following
 return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_species_status_cleaned.csv", on_bad_lines='skip', nrows=100)
 ```
 
-### Step 5: Import and review species status data
+### Step 4: Import and review species status data
 
 Create a new SQL cell called `species_by_country`. In the connection drop down menu, choose the In-memory SQL database.
 
@@ -45,7 +41,7 @@ SELECT
 FROM {{ load_species_status_data }};
 ```
 
-### Step 6: Transform the endangered species data
+### Step 5: Transform the endangered species data
 
 Create a new Python cell called `transform_endangered_species`. Enter the following Python code into the cell:
 
@@ -70,7 +66,7 @@ This takes the data returned in the previous cell and completes a couple of tran
 3. Calculates the total number of critically endangered species by country using `groupby`.
 
 
-### Step 7: Load Terrestrial Protected Area Data
+### Step 6: Load Terrestrial Protected Area Data
 
 Create a new Python cell called "load_terrestrial_protected_area_data" and add the following code to the cell:
 
@@ -78,9 +74,9 @@ Create a new Python cell called "load_terrestrial_protected_area_data" and add t
 return pd.read_csv("https://raw.githubusercontent.com/astronomer/cli-cloud-ide-workshop/main/include/data/country_terrestrial_protected_area_cleaned.csv", on_bad_lines='skip', nrows=100)
 ```
 
-### Step 8: Import and review protected area data
+### Step 7: Import and review protected area data
 
-Create a new SQL cell called `terrestrial_protected_area`. In the connection drop down, choose the In-memory SQL database
+Create a new SQL cell called `terrestrial_protected_area`. In the connection drop down, choose the In-memory SQL database.
 
 Enter the following SQL code in the cell, and then run it.
 
@@ -95,7 +91,7 @@ SELECT
 FROM {{ load_terrestrial_protected_area_data }};
 ```
 
-### Step 9: Transform the protected area data
+### Step 8: Transform the protected area data
 
 Create a new Python cell called `transform_tpa`. Enter the following Python code into the cell:
 
@@ -119,7 +115,7 @@ This takes the data returned in the previous cell and completes a couple of tran
 2. Rounds the percentage of protected area so the numbers are easier to review.
 3. Renames the `Value` column so that we can clearly join the two datasets later.
 
-### Step 10: Combine the two datasets
+### Step 9: Combine the two datasets
 
 Create a new Python cell called `combine_data`. Enter the following Python code into the cell:
 
@@ -133,7 +129,7 @@ return transform_endangered_species.merge(
 
 This creates a new temporary dataset with the joined data.
 
-### Step 11: Analyze the results by ranking the 10 countries with the most critically endangered species
+### Step 10: Analyze the results by ranking the 10 countries with the most critically endangered species
 
 Create a new SQL cell called `rank_and_save`. In the connection drop down menu, choose the In-memory SQL database.
 
