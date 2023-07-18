@@ -1,12 +1,16 @@
 ## Part 2: ELT pipeline
 
-Part 1 showed how easy it can be to get started using Airflow with the Cloud IDE. Now in Part 2, we'll tackle a slightly more complex use case of combining two complicated datasets. We will use the Cloud IDE to develop a pipeline that compares the number of endangered species present in a country with the amount of protected area that country has set aside for wildlife with the goal of making a recommendation for countries to prioritize for conservation efforts. Since we are unfamiliar with this data to start, we'll use the Cloud IDE to iteratively develop our pipeline.
+Part 1 showed how easy it can be to get started using Airflow with the Cloud IDE. Now in Part 2, we'll tackle a slightly more complex use case of combining two complicated datasets. We will use the Cloud IDE to develop a pipeline that compares the number of endangered species present in a country with the amount of protected area that country has set aside for wildlife with the goal of making a recommendation for countries to prioritize for conservation efforts. Since we are unfamiliar with this data to start, we'll use the Cloud IDE to iteratively develop our pipeline. This gives us the advantage of not needing to worry about running Airflow or boilerplate code while developing our SQL and Python logic.
 
 The data is publicly available and can be found [here](https://www.kaggle.com/datasets/sarthakvajpayee/global-species-extinction).
 
 ### Step 1: Create a pipeline with the Astro Cloud IDE
 
-Create a new pipeline in your workspace. Give your pipeline a unique name to identify it.
+Create a new pipeline in your workspace. Name your pipeline `endangered_species_elt` and give it the following description:
+
+```text
+This is an ELT pipeline that analyzes endangered species and protected area data.
+```
 
 ### Step 2: Add global imports
 

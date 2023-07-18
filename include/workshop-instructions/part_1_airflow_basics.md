@@ -4,7 +4,13 @@ In Part 1 of this workshop you will create a simple pipeline gathering informati
 
 ### Step 1: Create a pipeline with the Astro Cloud IDE
 
-Go to cloud.astronomer.io and login to your trial account. In your workspace, click `Cloud IDE` in the left menu. Create a new project, and then create a new pipeline using the `+ Pipeline` button. Give your pipeline a unique name to identify it.
+Go to cloud.astronomer.io and login to your trial account. In your workspace, click **Cloud IDE** in the left menu. Create a new project, and then create a new pipeline using the **+ Pipeline** button.
+
+Name your pipeline `my_manatee_pipeline` and give it the following description:
+
+```text
+This pipeline uses Airflow operators, connections, and variables to print information about manatees.
+```
 
 ### Step 2: Add Global Imports
 
@@ -20,7 +26,9 @@ def num_manatees():
 
 This cell will import any Python packages needed for your pipeline, as well as any Python functions you'll be calling.
 
-### Step 3: Add a Python task
+### Step 3: Add a PythonOperator task
+
+In the **Add Cell** drop down, search for the PythonOperator. It will have the Airflow logo next to it. Do *not* choose the `Python` cell with the Astro logo.
 
 1. Create a new PythonOperator cell called `count_the_manatees`.
 
@@ -30,7 +38,7 @@ This cell will import any Python packages needed for your pipeline, as well as a
 
 ### Step 4: Add a variable
 
-It looks like a new baby manatee has arrived! In your next task you'll name the new manatee.
+It looks like a new baby manatee has arrived! In your next task you'll name the new manatee using an Airflow variable. Airflow variables are key-value pairs that can be used to store information in your Airflow environment. They are commonly used to store instance level information that rarely changes, including secrets like an API key or the path to a configuration file (or a name!).
 
 Go to the Environment tab, select Variables, and add a new Variable called `MANATEE_NAME`. Fill in the value with your chosen name for the baby manatee.
 
